@@ -1,0 +1,40 @@
+# Task Management API Testing Guide
+# Make sure your server is running on http://localhost:3000
+
+# 1. Check if server is running
+curl http://localhost:3000
+
+# 2. Get all tasks (should have sample data)
+curl http://localhost:3000/tasks
+
+# 3. Create a new task
+curl -X POST http://localhost:3000/tasks \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Complete API project",
+    "description": "Build a RESTful API for task management using Node.js and Express",
+    "status": "in-progress",
+    "priority": "high"
+  }'
+
+# 4. Get a specific task by ID
+curl http://localhost:3000/tasks/1
+
+# 5. Update a task
+curl -X PUT http://localhost:3000/tasks/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Complete API project - UPDATED",
+    "description": "Build a comprehensive RESTful API for task management",
+    "status": "completed",
+    "priority": "high"
+  }'
+
+# 6. Filter tasks by status
+curl "http://localhost:3000/tasks?status=completed"
+
+# 7. Search tasks
+curl "http://localhost:3000/tasks?search=API"
+
+# 8. Delete a task
+curl -X DELETE http://localhost:3000/tasks/3
