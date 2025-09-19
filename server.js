@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(express.json()); // Parse JSON bodies
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
-// In-memory data storage for tasks
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
+
+
 let tasks = [];
 let nextId = 1;
 
@@ -52,7 +52,6 @@ const initializeSampleData = () => {
   console.log(`✅ Initialized with ${tasks.length} sample tasks`);
 };
 
-// Task model/schema
 const createTask = (title, description, status = 'pending', priority = 'medium') => {
   return {
     id: nextId++,
